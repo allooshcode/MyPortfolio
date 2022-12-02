@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_porfolio/features/portfolio/presentation/pages/home_page/home_page_mobile.dart';
-import 'package:my_porfolio/features/portfolio/presentation/pages/home_page/home_page_web.dart';
+import 'package:my_porfolio/features/portfolio/presentation/pages/mobile/home_page_mobile.dart';
+import 'package:my_porfolio/features/portfolio/presentation/pages/web/home_page_web.dart';
 import 'package:my_porfolio/global/utils/responser_widget.dart';
 
 class HomePage extends StatelessWidget {
