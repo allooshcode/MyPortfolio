@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_porfolio/features/portfolio/presentation/widgets/home_page_widgets/web/header_info_web_widget.dart';
+import 'package:my_porfolio/global/animations/tween_animation.dart';
 import 'package:my_porfolio/global/shared_widgets/curve_painter.dart';
 import 'package:my_porfolio/global/utils/constants.dart';
 
@@ -18,7 +19,7 @@ class HomePageWeb extends StatelessWidget {
             Row(
               children: const [
                 Expanded(child: HeaderInfoWebWidget()),
-                PhotoHome(),
+                CustomTweenAnimation(widgetToAnimate: PhotoHome()),
               ],
             ),
             SizedBox(
