@@ -18,18 +18,21 @@ class ListTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        textData,
-        style: getAppThemeDataLight().textTheme.bodyLarge?.copyWith(
-            fontSize: AppConstants.headerText *
-                AppConstants.unitHeightValue(context)),
-        textAlign: TextAlign.center,
-      ),
-      leading: Icon(iconLeading,
-          color: color,
-          size:
-              AppConstants.unitHeightValue(context) * AppConstants.headerText),
-    );
+    final width = MediaQuery.of(context).size.width;
+    return width <= 20
+        ? const SizedBox()
+        : ListTile(
+            title: Text(
+              textData,
+              style: getAppThemeDataLight().textTheme.bodyLarge?.copyWith(
+                  fontSize: AppConstants.headerText *
+                      AppConstants.unitHeightValue(context)),
+              textAlign: TextAlign.center,
+            ),
+            leading: Icon(iconLeading,
+                color: color,
+                size: AppConstants.unitHeightValue(context) *
+                    AppConstants.headerText),
+          );
   }
 }

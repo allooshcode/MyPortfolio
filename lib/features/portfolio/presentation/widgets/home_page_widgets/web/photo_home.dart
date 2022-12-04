@@ -16,7 +16,9 @@ class PhotoHome extends StatelessWidget {
           // size: 1.87KB
           thumbnail: const NetworkImage('https://i.imgur.com/7XL923M.jpg'),
           // size: 1.29MB
-          image: const AssetImage('assets/alaa.jpg'),
+          image: const AssetImage(
+            'assets/alaa.jpg',
+          ),
           height:
               AppConstants.unitHeightValue(context) * AppConstants.photoHigh,
           width:

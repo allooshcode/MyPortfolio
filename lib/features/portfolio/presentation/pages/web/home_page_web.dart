@@ -23,7 +23,7 @@ class HomePageWeb extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: AppConstants.unitHeightValue(context) * 80,
+              height: AppConstants.unitHeightValue(context) * 5,
             ),
             Container(
               width: double.infinity,

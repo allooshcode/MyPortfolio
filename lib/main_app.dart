@@ -12,6 +12,7 @@ class MyPortfolioApp extends StatelessWidget {
       home: const MyPortfolio(),
       theme: getAppThemeDataLight(),
       darkTheme: getAppThemeDataDark(),
+      themeMode: ThemeMode.light,
     );
   }
 }
@@ -22,6 +23,7 @@ class MyPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.blue,
       appBar: AppBar(),
       body: const HomePage(),
     );

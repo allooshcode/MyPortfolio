@@ -1,5 +1,8 @@
+import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:my_porfolio/global/utils/constants.dart';
 
 class CustomTweenAnimation extends StatefulWidget {
   const CustomTweenAnimation({super.key, required this.widgetToAnimate});
@@ -17,17 +20,34 @@ class _CustomTweenAnimationState extends State<CustomTweenAnimation>
 
   @override
   void initState() {
-    tween = Tween(begin: 200, end: 400);
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 5));
-    animation = tween.animate(controller)
-      ..addListener(() {
-        setState(() {});
-      });
-
-    controller.forward();
-
     super.initState();
+  }
+
+  bool isChanged = false;
+  @override
+  void didChangeDependencies() {
+    if (!isChanged) {
+      tween = Tween(
+          begin: AppConstants.unitHeightValue(context) * 80,
+          end: AppConstants.unitHeightValue(context) * 100);
+      controller = AnimationController(
+          vsync: this, duration: const Duration(seconds: 5));
+      animation = tween.animate(controller)
+        ..addListener(() {
+          setState(() {});
+        });
+
+      controller.forward();
+      super.didChangeDependencies();
+    }
+    isChanged = true;
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+
+    super.dispose();
   }
 
   @override
