@@ -13,7 +13,7 @@ class HomePageWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
@@ -23,10 +23,11 @@ class HomePageWeb extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: AppConstants.unitHeightValue(context) * 5,
+              height: AppConstants.unitHeightValue(context) * 20,
             ),
             Container(
               width: double.infinity,
+              // height: AppConstants.unitHeightValue(context) * 50,
               color: const Color.fromARGB(255, 243, 239, 239),
               child: CustomPaint(
                 painter: CurvePainter(),

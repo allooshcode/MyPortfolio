@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CurvePainter extends CustomPainter {
@@ -15,7 +16,7 @@ class CurvePainter extends CustomPainter {
 
     // canvas.drawPath(path, paint);
     var paint = Paint();
-    paint.color = Colors.green[800]!;
+    paint.color = const Color.fromARGB(255, 247, 248, 243);
     paint.style = PaintingStyle.fill;
 
     var path = Path();
@@ -24,9 +25,13 @@ class CurvePainter extends CustomPainter {
     // path.quadraticBezierTo(150, -150, 300, -150);
 
     //  path.moveTo(600, -300);
-
-    path.quadraticBezierTo(300, -100, size.width / 3, -100);
-    path.quadraticBezierTo(size.width / 1.5, -100, size.width, -200);
+    if (kDebugMode) {
+      print(size.height.ceil());
+    }
+    path.quadraticBezierTo(
+        size.width / 5, -size.width / 8, size.width / 3, -size.width / 8);
+    path.quadraticBezierTo(
+        size.width / 1.5, -size.width / 8, size.width, -size.width / 5);
 
     // path.quadraticBezierTo(size.width * 0.75, size.height * 0.9584,
     //     size.width * 1.0, size.height * 0.9167);

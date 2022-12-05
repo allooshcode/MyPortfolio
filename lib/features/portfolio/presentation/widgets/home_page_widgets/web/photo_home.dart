@@ -8,24 +8,36 @@ class PhotoHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 50, right: 50),
-      child: ClipPath(
-        clipper: ClipPathClass(),
-        child: ProgressiveImage(
-          placeholder: const AssetImage('assets/alaa.jpg'),
-          // size: 1.87KB
-          thumbnail: const NetworkImage('https://i.imgur.com/7XL923M.jpg'),
-          // size: 1.29MB
-          image: const AssetImage(
-            'assets/alaa.jpg',
-          ),
-          height:
-              AppConstants.unitHeightValue(context) * AppConstants.photoHigh,
-          width:
-              AppConstants.unitHeightValue(context) * AppConstants.photoWidth,
+        height: AppConstants.unitHeightValue(context) * AppConstants.photoHigh,
+        width: AppConstants.unitHeightValue(context) * AppConstants.photoWidth,
+        margin: EdgeInsets.only(top: AppConstants.unitHeightValue(context) * 3),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white, width: 20),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(50), topRight: Radius.circular(50)),
         ),
-      ),
-    );
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(50),
+            topRight: Radius.circular(50),
+          ),
+          child: ClipPath(
+            clipper: ClipPathClass(),
+            child: ProgressiveImage(
+              placeholder: const AssetImage('assets/alaa.jpg'),
+              // size: 1.87KB
+              thumbnail: const NetworkImage('https://i.imgur.com/7XL923M.jpg'),
+              // size: 1.29MB
+              image: const AssetImage(
+                'assets/alaa.jpg',
+              ),
+              height: AppConstants.unitHeightValue(context) *
+                  AppConstants.photoHigh,
+              width: AppConstants.unitHeightValue(context) *
+                  AppConstants.photoWidth,
+            ),
+          ),
+        ));
   }
 }
 
