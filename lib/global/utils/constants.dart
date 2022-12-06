@@ -6,7 +6,7 @@ class AppConstants {
   }
 
   static const double headerText = 6;
-  static const double secondaryText = 4;
+  static const double secondaryText = 3;
 
   static const double photoHigh = 80;
   static const double photoWidth = 80;

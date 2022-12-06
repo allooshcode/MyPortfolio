@@ -16,7 +16,7 @@ class CurvePainter extends CustomPainter {
 
     // canvas.drawPath(path, paint);
     var paint = Paint();
-    paint.color = const Color.fromARGB(255, 247, 248, 243);
+    paint.color = const Color.fromARGB(255, 255, 255, 255);
     paint.style = PaintingStyle.fill;
 
     var path = Path();

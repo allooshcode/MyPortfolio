@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_porfolio/global/shared_widgets/list_tile.dart';
 import 'package:my_porfolio/global/utils/icon_broken.dart';
 
+import '../../../../../../global/shared_widgets/whatsapp_elevated_button.dart';
 import '../../../../../../global/utils/constants.dart';
 
 class HeaderInfoWebWidget extends StatelessWidget {
@@ -27,6 +28,18 @@ class HeaderInfoWebWidget extends StatelessWidget {
             iconLeading: IconBroken.Work,
             // color: AppColorsLight.secondaryColor,
           ),
+          Padding(
+            padding: EdgeInsets.all(AppConstants.unitHeightValue(context) * 2),
+            child: Text(
+                '         I\'m mobile developer & graphic desinger based in Malaysia,'
+                'and i\'m passionate and dedicated to my work. ',
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      fontSize: AppConstants.unitHeightValue(context) * 3,
+                    )),
+          ),
+          const WhatsAppElevatedButton(),
         ]);
   }
 }
