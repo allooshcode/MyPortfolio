@@ -3,15 +3,17 @@ import 'package:my_porfolio/global/app_theme/app_theme_light.dart';
 
 import '../utils/constants.dart';
 
-class ListTileWidget extends StatelessWidget {
-  const ListTileWidget(
+class CustomListTile extends StatelessWidget {
+  const CustomListTile(
       {super.key,
       required this.textData,
       this.iconLeading,
       this.iconTrailing,
-      this.color});
+      this.color,
+      required this.fontSize});
 
   final String textData;
+  final double fontSize;
   final IconData? iconLeading;
   final IconData? iconTrailing;
   final Color? color;
@@ -25,9 +27,8 @@ class ListTileWidget extends StatelessWidget {
             title: Text(
               textData,
               style: getAppThemeDataLight().textTheme.bodyLarge?.copyWith(
-                  fontSize: AppConstants.headerText *
-                      AppConstants.unitHeightValue(context)),
-              textAlign: TextAlign.center,
+                  fontSize: fontSize * AppConstants.unitHeightValue(context)),
+              textAlign: TextAlign.start,
             ),
             leading: Icon(iconLeading,
                 color: color,

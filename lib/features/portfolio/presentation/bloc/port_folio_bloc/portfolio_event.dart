@@ -6,3 +6,7 @@ abstract class PortfolioEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class LaunchWhatsAppEvent extends PortfolioEvent {
+  const LaunchWhatsAppEvent();
+}

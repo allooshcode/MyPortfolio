@@ -8,3 +8,7 @@ abstract class PortfolioState extends Equatable {
 }
 
 class PortfolioInitial extends PortfolioState {}
+
+class LaunchinglinkState extends PortfolioState {}
+
+class LaunchedlinkState extends PortfolioState {}

@@ -17,9 +17,15 @@ class HomePageWeb extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
-              children: const [
-                Expanded(child: HeaderInfoWebWidget()),
-                CustomTweenAnimation(widgetToAnimate: PhotoHome()),
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Expanded(child: HeaderInfoWebWidget()),
+                SizedBox(
+                  width: AppConstants.secondaryText *
+                      AppConstants.unitHeightValue(context),
+                ),
+                const Expanded(
+                    child: CustomTweenAnimation(widgetToAnimate: PhotoHome())),
               ],
             ),
             SizedBox(

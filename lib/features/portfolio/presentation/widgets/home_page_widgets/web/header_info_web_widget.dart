@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_porfolio/features/portfolio/presentation/bloc/port_folio_bloc/portfolio_bloc.dart';
+import 'package:my_porfolio/features/portfolio/presentation/widgets/home_page_widgets/web/follow_me_symbols.dart';
+import 'package:my_porfolio/global/shared_widgets/custom_button.dart';
 import 'package:my_porfolio/global/shared_widgets/list_tile.dart';
 import 'package:my_porfolio/global/utils/icon_broken.dart';
 
-import '../../../../../../global/shared_widgets/whatsapp_elevated_button.dart';
 import '../../../../../../global/utils/constants.dart';
 
 class HeaderInfoWebWidget extends StatelessWidget {
@@ -11,35 +15,91 @@ class HeaderInfoWebWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_literals_to_create_immutables
-    return Column(
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const CustomListTile(
+        textData: 'ALAA AHMAD ALI AL AYATIM',
+        iconLeading: IconBroken.Profile,
+        fontSize: 6,
+      ),
+      SizedBox(
+        height:
+            AppConstants.secondaryText * AppConstants.unitHeightValue(context),
+      ),
+      const CustomListTile(
+        textData: 'FLUTTER DEVELOPER',
+        iconLeading: IconBroken.Work, fontSize: 6,
+        // color: AppColorsLight.secondaryColor,
+      ),
+      Padding(
+        padding: EdgeInsets.all(AppConstants.unitHeightValue(context) * 2),
+        child: Text(
+            '         I\'m mobile developer & graphic desinger based in Malaysia,'
+            'and i\'m passionate and dedicated to my work. ',
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  fontSize: AppConstants.unitHeightValue(context) * 3,
+                )),
+      ),
+      Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const ListTileWidget(
-            textData: 'ALAA AHMAD ALI AL AYATIM',
-            iconLeading: IconBroken.Profile,
-          ),
           SizedBox(
-            height: AppConstants.secondaryText *
+            width: AppConstants.secondaryText *
                 AppConstants.unitHeightValue(context),
           ),
-          const ListTileWidget(
-            textData: 'FLUTTER DEVELOPER',
-            iconLeading: IconBroken.Work,
-            // color: AppColorsLight.secondaryColor,
+          Expanded(
+              child: BlocProvider(
+            create: (context) => PortfolioBloc(),
+            child: BlocConsumer<PortfolioBloc, PortfolioState>(
+              listener: (context, state) {
+                if (state is LaunchinglinkState) {
+                  Fluttertoast.showToast(
+                      msg: 'Excited to contact you..',
+                      toastLength: Toast.LENGTH_LONG,
+                      webPosition: 'center');
+                }
+              },
+              builder: (context, state) {
+                return CustomButton(
+                  fun: () {
+                    BlocProvider.of<PortfolioBloc>(context)
+                        .add(const LaunchWhatsAppEvent());
+                  },
+                  icon: IconBroken.Call_Silent,
+                  title: 'Contact Now',
+                );
+              },
+            ),
+          )),
+          SizedBox(
+            width: AppConstants.secondaryText *
+                AppConstants.unitHeightValue(context),
           ),
-          Padding(
-            padding: EdgeInsets.all(AppConstants.unitHeightValue(context) * 2),
-            child: Text(
-                '         I\'m mobile developer & graphic desinger based in Malaysia,'
-                'and i\'m passionate and dedicated to my work. ',
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontSize: AppConstants.unitHeightValue(context) * 3,
-                    )),
+          Expanded(
+            child: CustomButton(
+                fun: () => {}, title: 'My Works', icon: IconBroken.Activity),
           ),
-          const WhatsAppElevatedButton(),
-        ]);
+        ],
+      ),
+      SizedBox(
+        height:
+            AppConstants.secondaryText * AppConstants.unitHeightValue(context),
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const Text('  Follow Me:  '),
+          const FollowMeSymboles(),
+          Expanded(
+            child: SizedBox(
+              width: AppConstants.secondaryText *
+                  AppConstants.unitHeightValue(context),
+            ),
+          ),
+        ],
+      )
+    ]);
   }
 }

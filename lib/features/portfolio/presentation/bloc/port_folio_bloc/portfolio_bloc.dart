@@ -1,11 +1,20 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:my_porfolio/global/utils/icon_broken.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class WhatsAppElevatedButton extends StatelessWidget {
-  const WhatsAppElevatedButton({super.key});
+part 'portfolio_event.dart';
+part 'portfolio_state.dart';
+
+class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
+  PortfolioBloc() : super(PortfolioInitial()) {
+    on<LaunchWhatsAppEvent>((event, emit) async {
+      emit(LaunchinglinkState());
+      await contactwhatsapp();
+      emit(LaunchedlinkState());
+    });
+  }
 
   Future launchWhatsApp({
     required int phone,
@@ -30,8 +39,9 @@ class WhatsAppElevatedButton extends StatelessWidget {
     }
   }
 
-  Future<void> whatsapp() async {
+  Future<void> contactwhatsapp() async {
     try {
+      await Future.delayed(const Duration(seconds: 2));
       await launchWhatsApp(
         phone: 60104370100,
         message: 'nice to get touch with you, please how can help you ?',
@@ -39,14 +49,5 @@ class WhatsAppElevatedButton extends StatelessWidget {
     } catch (err) {
       Fluttertoast.showToast(msg: err.toString());
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      icon: const Icon(IconBroken.Message),
-      label: const Text('Say Hello'),
-      onPressed: () => whatsapp(),
-    );
   }
 }

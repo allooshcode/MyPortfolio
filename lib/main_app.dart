@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_porfolio/features/portfolio/presentation/pages/home_page.dart';
+import 'package:my_porfolio/features/portfolio/presentation/pages/main_layout.dart';
 import 'package:my_porfolio/global/app_theme/app_theme_dark.dart';
 import 'package:my_porfolio/global/app_theme/app_theme_light.dart';
 
@@ -25,7 +25,7 @@ class MyPortfolio extends StatelessWidget {
     return const Scaffold(
       // backgroundColor: Colors.blue,
       // appBar: AppBar(),
-      body: HomePage(),
+      body: MainLayout(),
     );
   }
 }
