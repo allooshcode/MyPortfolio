@@ -9,7 +9,7 @@ class PhotoHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: AppConstants.unitHeightValue(context) * AppConstants.photoHigh,
-        width: AppConstants.unitHeightValue(context) * AppConstants.photoWidth,
+        width: AppConstants.unitWidthValu(context) * AppConstants.photoWidth,
         margin: EdgeInsets.only(top: AppConstants.unitHeightValue(context) * 3),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 20),
@@ -33,8 +33,8 @@ class PhotoHome extends StatelessWidget {
               ),
               height: AppConstants.unitHeightValue(context) *
                   AppConstants.photoHigh,
-              width: AppConstants.unitHeightValue(context) *
-                  AppConstants.photoWidth,
+              width:
+                  AppConstants.unitWidthValu(context) * AppConstants.photoWidth,
             ),
           ),
         ));

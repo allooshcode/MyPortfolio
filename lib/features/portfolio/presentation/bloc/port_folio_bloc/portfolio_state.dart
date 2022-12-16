@@ -9,6 +9,12 @@ abstract class PortfolioState extends Equatable {
 
 class PortfolioInitial extends PortfolioState {}
 
-class LaunchinglinkState extends PortfolioState {}
+class LaunchingWhatsState extends PortfolioState {}
 
-class LaunchedlinkState extends PortfolioState {}
+class LaunchedWhatsState extends PortfolioState {}
+
+class LinkedInStateInit extends PortfolioState {}
+
+class LinkedInStateDone extends PortfolioState {}
+
+class LinkedInStateError extends PortfolioState {}

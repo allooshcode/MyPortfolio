@@ -10,3 +10,7 @@ abstract class PortfolioEvent extends Equatable {
 class LaunchWhatsAppEvent extends PortfolioEvent {
   const LaunchWhatsAppEvent();
 }
+
+class CallLinkedInEvent extends PortfolioEvent {
+  const CallLinkedInEvent();
+}

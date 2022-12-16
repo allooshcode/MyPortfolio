@@ -50,28 +50,25 @@ class HeaderInfoWebWidget extends StatelessWidget {
                 AppConstants.unitHeightValue(context),
           ),
           Expanded(
-              child: BlocProvider(
-            create: (context) => PortfolioBloc(),
-            child: BlocConsumer<PortfolioBloc, PortfolioState>(
-              listener: (context, state) {
-                if (state is LaunchinglinkState) {
-                  Fluttertoast.showToast(
-                      msg: 'Excited to contact you..',
-                      toastLength: Toast.LENGTH_LONG,
-                      webPosition: 'center');
-                }
-              },
-              builder: (context, state) {
-                return CustomButton(
-                  fun: () {
-                    BlocProvider.of<PortfolioBloc>(context)
-                        .add(const LaunchWhatsAppEvent());
-                  },
-                  icon: IconBroken.Call_Silent,
-                  title: 'Contact Now',
-                );
-              },
-            ),
+              child: BlocConsumer<PortfolioBloc, PortfolioState>(
+            listener: (context, state) {
+              if (state is LaunchingWhatsState) {
+                Fluttertoast.showToast(
+                    msg: 'Excited to contact you..',
+                    toastLength: Toast.LENGTH_LONG,
+                    webPosition: 'center');
+              }
+            },
+            builder: (context, state) {
+              return CustomButton(
+                fun: () {
+                  BlocProvider.of<PortfolioBloc>(context)
+                      .add(const LaunchWhatsAppEvent());
+                },
+                icon: IconBroken.Call_Silent,
+                title: 'Contact Now',
+              );
+            },
           )),
           SizedBox(
             width: AppConstants.secondaryText *
