@@ -17,4 +17,7 @@ class AppConstants {
 
   static const String linkidInUrl =
       'https://www.linkedin.com/in/alaa-ahmad-39074a108/';
+
+  static const String resumeUrl =
+      'https://drive.google.com/file/d/1dJVaFXCab5T3pZrvp7qM3esx128tfWZW/view?usp=sharing';
 }

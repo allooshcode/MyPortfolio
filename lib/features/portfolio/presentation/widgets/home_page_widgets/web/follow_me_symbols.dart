@@ -29,7 +29,7 @@ class FollowMeSymboles extends StatelessWidget {
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontSize: AppConstants.unitWidthValu(context) * 0.8)),
+                        fontSize: AppConstants.unitWidthValu(context) * 0.7)),
               )),
         ),
       ],

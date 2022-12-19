@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_porfolio/features/portfolio/presentation/pages/mobile/home_page_mobile.dart';
 import 'package:my_porfolio/features/portfolio/presentation/pages/web/home_page_web.dart';
 import 'package:my_porfolio/global/shared_widgets/responser_widget.dart';
 
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const ResponserWidget(
       //here added web for both platform.
-      mobileWidget: HomePageWeb(),
+      mobileWidget: HomePageMobile(),
       webWidget: HomePageWeb(),
     );
   }

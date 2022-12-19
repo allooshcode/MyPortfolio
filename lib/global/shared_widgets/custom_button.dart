@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_porfolio/global/utils/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
@@ -10,10 +11,17 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      icon: Icon(icon),
-      label: Text(title),
-      onPressed: () => fun(),
+    return Padding(
+      padding: EdgeInsets.only(
+          top: AppConstants.unitHeightValue(context) * 3,
+          left: AppConstants.unitWidthValu(context) * 3,
+          right: AppConstants.unitWidthValu(context) * 3,
+          bottom: AppConstants.unitHeightValue(context) * 3),
+      child: ElevatedButton.icon(
+        icon: Icon(icon),
+        label: Text(title),
+        onPressed: () => fun(),
+      ),
     );
   }
 }

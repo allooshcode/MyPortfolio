@@ -14,3 +14,7 @@ class LaunchWhatsAppEvent extends PortfolioEvent {
 class CallLinkedInEvent extends PortfolioEvent {
   const CallLinkedInEvent();
 }
+
+class CallResumeEvent extends PortfolioEvent {
+  const CallResumeEvent();
+}

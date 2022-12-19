@@ -14,7 +14,7 @@ ThemeData getAppThemeDataLight() {
           bodySmall: TextStyle(
               color: Color.fromARGB(255, 15, 16, 1),
               fontWeight: FontWeight.bold,
-              fontSize: 11),
+              fontSize: 13),
           bodyLarge: TextStyle(
             color: Color.fromARGB(255, 242, 241, 247),
           )),

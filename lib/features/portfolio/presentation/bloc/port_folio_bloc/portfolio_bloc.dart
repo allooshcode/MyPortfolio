@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_linkedin_usecase.dart';
+import 'package:my_porfolio/features/portfolio/domain/usecases/resume_usecase.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'portfolio_event.dart';
@@ -10,8 +11,17 @@ part 'portfolio_state.dart';
 
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final CallLinkedInUsecase callLinkedInUsecase;
-  PortfolioBloc({required this.callLinkedInUsecase})
+  final CallResumeUsecase callResumeUsecase;
+
+  PortfolioBloc(
+      {required this.callResumeUsecase, required this.callLinkedInUsecase})
       : super(PortfolioInitial()) {
+    on<CallResumeEvent>((event, emit) async {
+      final response = await callResumeUsecase.callResume();
+      response.fold(
+          (l) => emit(ResumeStateError()), (r) => emit(ResumeStateDone()));
+    });
+
     on<LaunchWhatsAppEvent>((event, emit) async {
       emit(LaunchingWhatsState());
       await contactwhatsapp();

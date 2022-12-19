@@ -37,6 +37,7 @@ class HeaderInfoWebWidget extends StatelessWidget {
             'and i\'m passionate and dedicated to my work. ',
             textAlign: TextAlign.center,
             maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontSize: AppConstants.unitHeightValue(context) * 3,
                 )),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_porfolio/features/portfolio/presentation/bloc/port_folio_bloc/portfolio_bloc.dart';
 import 'package:my_porfolio/features/portfolio/presentation/pages/home_page.dart';
 import 'package:my_porfolio/features/portfolio/presentation/pages/web/work_page_web.dart';
 import 'package:my_porfolio/global/animations/fade_animation.dart';
@@ -15,6 +17,13 @@ class MainLayout extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(actions: [
+        CustomButton(
+            fun: () {
+              BlocProvider.of<PortfolioBloc>(context)
+                  .add(const CallResumeEvent());
+            },
+            title: "Resume",
+            icon: IconBroken.Edit_Square),
         CustomButton(
             fun: () {
               Scrollable.ensureVisible(homeKey.currentContext!);

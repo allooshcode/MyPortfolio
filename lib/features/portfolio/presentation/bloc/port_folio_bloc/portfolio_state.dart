@@ -18,3 +18,7 @@ class LinkedInStateInit extends PortfolioState {}
 class LinkedInStateDone extends PortfolioState {}
 
 class LinkedInStateError extends PortfolioState {}
+
+class ResumeStateError extends PortfolioState {}
+
+class ResumeStateDone extends PortfolioState {}
