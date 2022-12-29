@@ -11,7 +11,9 @@ class PhotoWidget extends StatelessWidget {
     return Container(
         height: AppConstants.unitHeightValue(context) * AppConstants.photoHigh,
         width: AppConstants.unitWidthValu(context) * AppConstants.photoWidth,
-        margin: EdgeInsets.only(top: AppConstants.unitHeightValue(context) * 3),
+        margin: EdgeInsets.all(
+          AppConstants.unitHeightValue(context) * 3,
+        ),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 20),
           borderRadius: const BorderRadius.only(

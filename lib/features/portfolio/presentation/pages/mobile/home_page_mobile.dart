@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../global/animations/tween_animation.dart';
-import '../../../../../global/shared_widgets/curve_painter.dart';
+import '../../../../../global/shared_widgets/bottom_curve_painter.dart';
+import '../../../../../global/shared_widgets/top_curve_painter.dart';
 import '../../../../../global/utils/constants.dart';
 import '../../widgets/home_page_widgets/web/header_info_web_widget.dart';
 import '../../widgets/home_page_widgets/web/photo_home.dart';
@@ -30,7 +31,7 @@ class HomePageMobile extends StatelessWidget {
               // height: AppConstants.unitHeightValue(context) * 50,
               color: const Color.fromARGB(255, 243, 239, 239),
               child: CustomPaint(
-                painter: CurvePainter(),
+                painter: BottomCurvePainter(),
               ),
             ),
           ]),

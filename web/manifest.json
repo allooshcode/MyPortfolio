@@ -1,11 +1,11 @@
 {
-    "name": "my_porfolio",
+    "name": "My portfolio",
     "short_name": "my_porfolio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Alaa Al Ayatim",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

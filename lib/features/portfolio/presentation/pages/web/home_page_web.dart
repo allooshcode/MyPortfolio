@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_porfolio/features/portfolio/presentation/widgets/home_page_widgets/web/header_info_web_widget.dart';
 import 'package:my_porfolio/global/animations/tween_animation.dart';
-import 'package:my_porfolio/global/shared_widgets/curve_painter.dart';
+import 'package:my_porfolio/global/shared_widgets/bottom_curve_painter.dart';
+import 'package:my_porfolio/global/shared_widgets/top_curve_painter.dart';
 import 'package:my_porfolio/global/utils/constants.dart';
 
 import '../../widgets/home_page_widgets/web/photo_home.dart';
@@ -16,6 +17,15 @@ class HomePageWeb extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+             
+            // Container(
+            //   width: double.infinity,
+            //   // height: AppConstants.unitHeightValue(context) * 50,
+            //   color: const Color.fromARGB(255, 243, 239, 239),
+            //   child: CustomPaint(
+            //     painter: TopCurvePainter(),
+            //   ),
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -36,7 +46,7 @@ class HomePageWeb extends StatelessWidget {
               // height: AppConstants.unitHeightValue(context) * 50,
               color: const Color.fromARGB(255, 243, 239, 239),
               child: CustomPaint(
-                painter: CurvePainter(),
+                painter: BottomCurvePainter(),
               ),
             ),
           ]),

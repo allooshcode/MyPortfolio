@@ -77,7 +77,12 @@ class HeaderInfoWebWidget extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
-                fun: () => {}, title: 'My Works', icon: IconBroken.Activity),
+                fun: () {
+                  BlocProvider.of<PortfolioBloc>(context)
+                      .add(const CallResumeEvent());
+                },
+                title: "Resume",
+                icon: IconBroken.Edit_Square),
           ),
         ],
       ),
