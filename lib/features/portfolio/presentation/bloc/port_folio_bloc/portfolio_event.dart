@@ -18,3 +18,11 @@ class CallLinkedInEvent extends PortfolioEvent {
 class CallResumeEvent extends PortfolioEvent {
   const CallResumeEvent();
 }
+
+class CallWebLinkEvent extends PortfolioEvent {
+  const CallWebLinkEvent();
+}
+
+class CallMobLinkEvent extends PortfolioEvent {
+  const CallMobLinkEvent();
+}

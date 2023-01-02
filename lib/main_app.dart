@@ -18,6 +18,7 @@ class MyPortfolioApp extends StatelessWidget {
           create: (context) => PortfolioBloc(
             callLinkedInUsecase: sl(),
             callResumeUsecase: sl(),
+            callMobAppUsecase: sl(), callWebAppUsecase: sl()
           ),
         )
       ], child: const MyPortfolio()),

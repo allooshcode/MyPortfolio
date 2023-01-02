@@ -27,8 +27,9 @@ class _CustomTweenAnimationState extends State<CustomTweenAnimation>
   void didChangeDependencies() {
     if (!isChanged) {
       tween = Tween(
-          begin: AppConstants.unitHeightValue(context) * 30,
-          end: AppConstants.unitHeightValue(context) * 90);
+          begin:
+              AppConstants.unitHeightValue(context) * AppConstants.photoWidth,
+          end: AppConstants.unitHeightValue(context) * AppConstants.photoHigh);
       controller = AnimationController(
           vsync: this, duration: const Duration(seconds: 5));
       animation = tween.animate(controller)

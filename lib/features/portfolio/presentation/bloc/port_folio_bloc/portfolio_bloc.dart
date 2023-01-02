@@ -2,7 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:my_porfolio/features/portfolio/domain/usecases/call_mob_link_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_linkedin_usecase.dart';
+import 'package:my_porfolio/features/portfolio/domain/usecases/call_web_app_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/resume_usecase.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,28 +14,23 @@ part 'portfolio_state.dart';
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final CallLinkedInUsecase callLinkedInUsecase;
   final CallResumeUsecase callResumeUsecase;
+  final CallMobAppUsecase? callMobAppUsecase;
+  final CallWebAppUsecase callWebAppUsecase;
 
   PortfolioBloc(
-      {required this.callResumeUsecase, required this.callLinkedInUsecase})
+      {required this.callMobAppUsecase,required this.callWebAppUsecase, 
+      required this.callResumeUsecase,
+      required this.callLinkedInUsecase})
       : super(PortfolioInitial()) {
-    on<CallResumeEvent>((event, emit) async {
-      final response = await callResumeUsecase.callResume();
-      response.fold(
-          (l) => emit(ResumeStateError()), (r) => emit(ResumeStateDone()));
-    });
+    on<CallMobLinkEvent>(eventOfMobApp);
 
-    on<LaunchWhatsAppEvent>((event, emit) async {
-      emit(LaunchingWhatsState());
-      await contactwhatsapp();
-      emit(LaunchedWhatsState());
-    });
+    on<CallWebLinkEvent>(eventOfWeb);
 
-    on<CallLinkedInEvent>(((event, emit) async {
-      emit(LinkedInStateInit());
-      final response = await callLinkedInUsecase.callLinkedIn();
-      response.fold(
-          (l) => emit(LinkedInStateError()), (r) => emit(LinkedInStateDone()));
-    }));
+    on<CallResumeEvent>(eventOfResume);
+
+    on<LaunchWhatsAppEvent>(eventOfWhatsApp);
+
+    on<CallLinkedInEvent>(eventOfLinkedIn);
   }
 
   Future launchWhatsApp({
@@ -69,5 +66,39 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     } catch (err) {
       Fluttertoast.showToast(msg: err.toString());
     }
+  }
+
+  Future eventOfLinkedIn(event, emit) async {
+    emit(LinkedInStateInit());
+    final response = await callLinkedInUsecase.callLinkedIn();
+    response.fold(
+        (l) => emit(LinkedInStateError()), (r) => emit(LinkedInStateDone()));
+  }
+
+  Future eventOfWhatsApp(event, emit) async {
+    emit(LaunchingWhatsState());
+    await contactwhatsapp();
+    emit(LaunchedWhatsState());
+  }
+
+  Future eventOfResume(event, emit) async {
+    final response = await callResumeUsecase.callResume();
+    response.fold(
+        (l) => emit(ResumeStateError()), (r) => emit(ResumeStateDone()));
+  }
+
+  Future eventOfWeb(event, emit) async {
+    final response = await callWebAppUsecase.callAnyLink();
+    response.fold((l) => emit(CallWebAppLinkStateError()),
+        (r) => emit(CallWebAppLinkStateDone()));
+  }
+
+  Future eventOfMobApp(event, emit) async {
+    if (kDebugMode) {
+      print('...........');
+    }
+    final response = await callMobAppUsecase!.callAnyLink();
+    response.fold((l) => emit(CallMobAppLinkStateError()),
+        (r) => emit(CallMobAppLinkStateDone()));
   }
 }

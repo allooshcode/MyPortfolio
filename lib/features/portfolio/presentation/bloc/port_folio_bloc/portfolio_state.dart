@@ -22,3 +22,11 @@ class LinkedInStateError extends PortfolioState {}
 class ResumeStateError extends PortfolioState {}
 
 class ResumeStateDone extends PortfolioState {}
+
+class CallWebAppLinkStateError extends PortfolioState {}
+
+class CallWebAppLinkStateDone extends PortfolioState {}
+
+class CallMobAppLinkStateError extends PortfolioState {}
+
+class CallMobAppLinkStateDone extends PortfolioState {}
