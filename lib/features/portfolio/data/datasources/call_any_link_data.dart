@@ -29,4 +29,17 @@ class CallMobAppData extends CallAnyLinkDataBase {
       throw ServerException(msgError: err.toString());
     }
   }
+  
+  @override
+  Future<void> callMobileIosLink() async {
+  try {
+      if (await canLaunchUrl(Uri.parse(AppConstants.iosAppLink))) {
+        await launchUrl(Uri.parse(AppConstants.iosAppLink));
+      } else {
+        throw ServerException(msgError: 'Could not launch url');
+      }
+    } catch (err) {
+      throw ServerException(msgError: err.toString());
+    }
+  }
 }

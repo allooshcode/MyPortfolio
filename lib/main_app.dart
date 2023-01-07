@@ -16,10 +16,10 @@ class MyPortfolioApp extends StatelessWidget {
       home: MultiBlocProvider(providers: [
         BlocProvider(
           create: (context) => PortfolioBloc(
-            callLinkedInUsecase: sl(),
-            callResumeUsecase: sl(),
-            callMobAppUsecase: sl(), callWebAppUsecase: sl()
-          ),
+              callLinkedInUsecase: sl(),
+              callResumeUsecase: sl(),
+              callMobAppAndiodUsecase: sl(),
+              callWebAppUsecase: sl(), callMobAppIosUsecase: sl()),
         )
       ], child: const MyPortfolio()),
       theme: getAppThemeDataLight(),

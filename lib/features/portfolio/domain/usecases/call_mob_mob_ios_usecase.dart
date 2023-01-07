@@ -4,12 +4,12 @@ import 'package:my_porfolio/global/errors/failures.dart';
 
 import '../repositories/call_mob_link_repo.dart';
 
-class CallMobAppAndriodUsecase extends Equatable {
+class CallMobAppIosUsecase extends Equatable {
   final CallAnyLinkRepoBase callAnyLinkRepoBase;
-  const CallMobAppAndriodUsecase(this.callAnyLinkRepoBase);
+  const CallMobAppIosUsecase(this.callAnyLinkRepoBase);
 
   Future<Either<Failure, bool>> callAnyLink() {
-    return callAnyLinkRepoBase.callMobAppRepository();
+    return callAnyLinkRepoBase.callIosAppRepository();
   }
 
   @override

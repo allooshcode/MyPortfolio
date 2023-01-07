@@ -16,7 +16,9 @@ class HomePageWeb extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-             
+            SizedBox(
+              height: 5 * AppConstants.unitHeightValue(context),
+            ),
             // Container(
             //   width: double.infinity,
             //   // height: AppConstants.unitHeightValue(context) * 50,

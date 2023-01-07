@@ -24,5 +24,6 @@ class CallWebLinkEvent extends PortfolioEvent {
 }
 
 class CallMobLinkEvent extends PortfolioEvent {
-  const CallMobLinkEvent();
+  const CallMobLinkEvent({required this.isIphoneApp});
+  final bool isIphoneApp;
 }

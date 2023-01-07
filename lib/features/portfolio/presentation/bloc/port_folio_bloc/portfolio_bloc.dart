@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_mob_link_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_linkedin_usecase.dart';
+import 'package:my_porfolio/features/portfolio/domain/usecases/call_mob_mob_ios_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_web_app_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/resume_usecase.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,11 +15,14 @@ part 'portfolio_state.dart';
 class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
   final CallLinkedInUsecase callLinkedInUsecase;
   final CallResumeUsecase callResumeUsecase;
-  final CallMobAppUsecase? callMobAppUsecase;
+  final CallMobAppAndriodUsecase? callMobAppAndiodUsecase;
   final CallWebAppUsecase callWebAppUsecase;
+  final CallMobAppIosUsecase callMobAppIosUsecase;
 
   PortfolioBloc(
-      {required this.callMobAppUsecase,required this.callWebAppUsecase, 
+      {required this.callMobAppIosUsecase,
+      required this.callMobAppAndiodUsecase,
+      required this.callWebAppUsecase,
       required this.callResumeUsecase,
       required this.callLinkedInUsecase})
       : super(PortfolioInitial()) {
@@ -93,12 +97,18 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
         (r) => emit(CallWebAppLinkStateDone()));
   }
 
-  Future eventOfMobApp(event, emit) async {
+  Future eventOfMobApp(CallMobLinkEvent event, emit) async {
     if (kDebugMode) {
       print('...........');
     }
-    final response = await callMobAppUsecase!.callAnyLink();
-    response.fold((l) => emit(CallMobAppLinkStateError()),
-        (r) => emit(CallMobAppLinkStateDone()));
+    if (event.isIphoneApp) {
+      final response = await callMobAppIosUsecase.callAnyLink();
+      response.fold((l) => emit(CallMobAppLinkStateError()),
+          (r) => emit(CallMobAppLinkStateDone()));
+    } else {
+      final response = await callMobAppAndiodUsecase!.callAnyLink();
+      response.fold((l) => emit(CallMobAppLinkStateError()),
+          (r) => emit(CallMobAppLinkStateDone()));
+    }
   }
 }

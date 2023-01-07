@@ -19,6 +19,7 @@ class AppConstants {
       'https://play.google.com/store/apps/details?id=com.suriawholesaler.suriashop';
 
   static const String webAppLink = 'https://suriawholesaler.com/';
+    static const String iosAppLink = 'https://apps.apple.com/tt/app/suria-store/id1606872385?uo=2';
 
   static const String linkidInUrl =
       'https://www.linkedin.com/in/alaa-ahmad-39074a108/';

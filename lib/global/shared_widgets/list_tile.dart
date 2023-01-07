@@ -6,6 +6,7 @@ import '../utils/constants.dart';
 class CustomListTile extends StatelessWidget {
   const CustomListTile(
       {super.key,
+      this.subTitle,
       required this.textData,
       this.iconLeading,
       this.iconTrailing,
@@ -13,6 +14,7 @@ class CustomListTile extends StatelessWidget {
       required this.fontSize});
 
   final String textData;
+  final String? subTitle;
   final double fontSize;
   final IconData? iconLeading;
   final IconData? iconTrailing;
@@ -24,8 +26,16 @@ class CustomListTile extends StatelessWidget {
     return width <= 20
         ? const SizedBox()
         : ListTile(
+            subtitle: Text(
+              subTitle ?? '',
+              style: getAppThemeDataLight().textTheme.bodyLarge?.copyWith(
+                  fontSize: 3 * AppConstants.unitHeightValue(context)),
+              textAlign: TextAlign.start,
+              overflow: TextOverflow.ellipsis,
+            ),
             title: Text(
               textData,
+              overflow: TextOverflow.ellipsis,
               style: getAppThemeDataLight().textTheme.bodyLarge?.copyWith(
                   fontSize: fontSize * AppConstants.unitHeightValue(context)),
               textAlign: TextAlign.start,

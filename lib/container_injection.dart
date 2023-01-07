@@ -3,13 +3,14 @@ import 'package:my_porfolio/features/portfolio/data/datasources/call_linkedin_da
 import 'package:my_porfolio/features/portfolio/data/datasources/call_any_link_data.dart';
 import 'package:my_porfolio/features/portfolio/data/datasources/resume_data.dart';
 import 'package:my_porfolio/features/portfolio/data/repositories/call_linkedin_data.dart';
-import 'package:my_porfolio/features/portfolio/data/repositories/call_mob_app_repo_imp.dart';
+import 'package:my_porfolio/features/portfolio/data/repositories/call_any_link_repo_imp.dart';
 import 'package:my_porfolio/features/portfolio/data/repositories/resume_repository_data.dart';
 import 'package:my_porfolio/features/portfolio/domain/repositories/call_mob_link_repo.dart';
 import 'package:my_porfolio/features/portfolio/domain/repositories/call_linkedin_repository.dart';
 import 'package:my_porfolio/features/portfolio/domain/repositories/resume_repository.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_mob_link_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_linkedin_usecase.dart';
+import 'package:my_porfolio/features/portfolio/domain/usecases/call_mob_mob_ios_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/call_web_app_usecase.dart';
 import 'package:my_porfolio/features/portfolio/domain/usecases/resume_usecase.dart';
 import 'package:my_porfolio/features/portfolio/presentation/bloc/port_folio_bloc/portfolio_bloc.dart';
@@ -20,15 +21,22 @@ Future initSl() async {
   //contorllers
 
   sl.registerFactory(() => PortfolioBloc(
-      callLinkedInUsecase: sl(),
-      callResumeUsecase: sl(),
-      callMobAppUsecase: sl(), callWebAppUsecase: sl()));
+        callLinkedInUsecase: sl(),
+        callResumeUsecase: sl(),
+        callMobAppAndiodUsecase: sl(),
+        callWebAppUsecase: sl(),
+        callMobAppIosUsecase: sl(),
+      ));
   //usecases
   sl.registerLazySingleton<CallResumeUsecase>(() => CallResumeUsecase(sl()));
   sl.registerLazySingleton<CallLinkedInUsecase>(
       () => CallLinkedInUsecase(sl()));
-  sl.registerLazySingleton<CallMobAppUsecase>(() => CallMobAppUsecase(sl()));
-   sl.registerLazySingleton<CallWebAppUsecase>(() => CallWebAppUsecase(sl()));
+  sl.registerLazySingleton<CallMobAppAndriodUsecase>(
+      () => CallMobAppAndriodUsecase(sl()));
+  sl.registerLazySingleton<CallWebAppUsecase>(() => CallWebAppUsecase(sl()));
+
+  sl.registerLazySingleton<CallMobAppIosUsecase>(
+      () => CallMobAppIosUsecase(sl()));
 
   //domain
   sl.registerLazySingleton<CallResumeRepository>(
@@ -38,7 +46,7 @@ Future initSl() async {
       () => CallLinkedInDataRepository(sl()));
 
   sl.registerLazySingleton<CallAnyLinkRepoBase>(
-      () => CallMobAppRepoImp(callAnyLinkData: sl()));
+      () => CallAnyLinkRepoImp(callAnyLinkData: sl()));
 
   //data
   sl.registerLazySingleton<ResumeData>(() => ResumeData());
